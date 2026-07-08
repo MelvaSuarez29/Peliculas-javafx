@@ -77,7 +77,7 @@ cine
 4. Configura las credenciales de conexión en el archivo **Conexion.java**:
 
 ```java
-private static final String JDBC_URL = "jdbc:mysql://localhost:3307/cine";
+private static final String JDBC_URL = "jdbc:mysql://localhost:3306/cine";
 private static final String JDBC_USER = "root";
 private static final String JDBC_PASSWORD = "";
 ```
