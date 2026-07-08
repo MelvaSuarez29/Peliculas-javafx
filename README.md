@@ -1,125 +1,136 @@
-# Sistema de Login y Gestión de Productos - JavaFX + MySQL + BCrypt
+# 🎬 Gestor de Películas - JavaFX + JPA + MySQL
 
-Aplicación de escritorio desarrollada en Java con JavaFX y MySQL que implementa un sistema de autenticación seguro mediante BCrypt y control de acceso basado en roles (ADMIN, VENDEDOR y CLIENTE). Además, incorpora un módulo CRUD completo para la gestión de productos con permisos dinámicos según el rol del usuario autenticado.
+Aplicación de escritorio para el registro y consulta de películas, desarrollada en **Java** utilizando **JavaFX**, **JPA (Hibernate)** y **MySQL** como sistema de gestión de base de datos. La aplicación implementa operaciones CRUD completas sobre el catálogo de películas mediante persistencia con JPA.
+
+---
 
 ## ✨ Funcionalidades
 
-- Registro de nuevos usuarios con contraseñas protegidas mediante BCrypt.
-- Inicio de sesión con validación de credenciales utilizando hash.
-- Control de acceso basado en roles (RBAC).
-- Tres roles de usuario:
-  - ADMIN
-  - VENDEDOR
-  - CLIENTE
-- CRUD completo de productos.
-- Búsqueda de productos.
-- Reporte de productos en consola.
-- Interfaz gráfica desarrollada con JavaFX y FXML.
-- Cierre de sesión con retorno a la pantalla de inicio de sesión.
-- Restricción dinámica de botones y acciones según el rol del usuario.
+- Insertar nuevas películas.
+- Modificar películas existentes.
+- Eliminar películas por ID.
+- Buscar películas por ID.
+- Mostrar la información de una película seleccionada.
+- Imprimir un reporte completo de películas en consola.
+- Tabla de películas con actualización en tiempo real.
+- Persistencia de datos mediante JPA (Hibernate).
+
+---
 
 ## 🛠️ Tecnologías utilizadas
 
-- Java 21
-- JavaFX 21
+- Java 17+
+- JavaFX 17+
+- JPA (Jakarta Persistence)
+- Hibernate ORM
 - MySQL 8.0+
-- JDBC
-- jBCrypt
+- MySQL Connector/J
 - Maven
+- Java Platform Module System (JPMS)
+
+---
 
 ## 📦 Estructura del proyecto
 
 ```text
-crudproductos/
-
+proyjpa/
 ├── src/
-│   └── main/
-│       ├── java/
-│       │   └── org/epn/crudproductosmelvasuarez/
-│       │       ├── Application.java
-│       │       ├── Launcher.java
-│       │       ├── controlador/
-│       │       │   ├── LoginController.java
-│       │       │   └── CatalogosProdController.java
-│       │       └── modelo/
-│       │           ├── Conexion.java
-│       │           ├── Crud.java
-│       │           ├── ImplCrud.java
-│       │           ├── Producto.java
-│       │           ├── Seguridad.java
-│       │           ├── Usuario.java
-│       │           └── UsuarioDAO.java
-│       └── resources/
-│           ├── Login.fxml
-│           └── Catalogo_Productos.fxml
+│   └── com/epn/proyjpa/
+│       ├── modelo/
+│       │   ├── Pelicula.java              # Entidad JPA (@Entity)
+│       │   ├── PeliculaDAO.java           # Operaciones CRUD con JPA
+│       │   ├── Servicio.java              # Lógica de negocio
+│       │   ├── Conexion.java              # Configuración de conexión
+│       │   ├── Crud.java                  # Interfaz CRUD
+│       │   └── TestConexion.java          # Prueba de conexión
+│       ├── CatalogoPeliculasController.java
+│       ├── HelloApplication.java
+│       ├── HelloController.java
+│       ├── Launcher.java
+│       └── peliculas.fxml
 │
-├── pom.xml
+├── src/main/resources/
+│   └── META-INF/
+│       └── persistence.xml
+│
 ├── module-info.java
+├── pom.xml
 └── README.md
 ```
 
+---
+
 ## ⚙️ Configuración de la Base de Datos
 
-1. Instala MySQL Server.
+1. Instala y ejecuta MySQL Server.
 
 2. Crea una base de datos llamada:
 
 ```text
-control_productos
+cine
 ```
 
-3. Ejecuta el script SQL para crear las tablas necesarias.
+3. Ejecuta el script SQL para crear la tabla **peliculas**.
 
-> **Nota:** El script completo de la base de datos (creación de tablas e inserción de usuarios de prueba) se encuentra disponible en la rama **`database`** de este repositorio.
+> **Nota:** El script completo de creación de la base de datos y los datos de ejemplo se encuentra disponible en la rama **`database`** de este repositorio.
 
-4. Configura la conexión en la clase `Conexion.java`:
+4. Configura las credenciales de conexión en el archivo **Conexion.java**:
 
 ```java
-private static final String JDBC_URL = "jdbc:mysql://localhost:3307/control_productos";
+private static final String JDBC_URL = "jdbc:mysql://localhost:3307/cine";
 private static final String JDBC_USER = "root";
 private static final String JDBC_PASSWORD = "";
 ```
 
-Modifica el puerto, usuario y contraseña según tu configuración de MySQL.
+5. Verifica que el archivo **persistence.xml** tenga configurada correctamente la unidad de persistencia y la conexión a tu base de datos.
+
+---
 
 ## 🔧 Configuración del proyecto
 
 ### Requisitos
 
-- JDK 21 o superior.
-- JavaFX 21.
+- JDK 17 o superior.
+- JavaFX 17 o superior.
 - MySQL Server 8.0 o superior.
 - Maven.
-- IntelliJ IDEA (recomendado) o cualquier IDE compatible con JavaFX.
+- IntelliJ IDEA o Eclipse con soporte para JavaFX.
 
-### Dependencias
+### Dependencias principales
 
-El proyecto utiliza Maven para gestionar automáticamente las dependencias.
-
-Entre las principales se encuentran:
+El proyecto utiliza Maven para administrar automáticamente las dependencias.
 
 - JavaFX Controls
 - JavaFX FXML
+- Jakarta Persistence
+- Hibernate ORM
 - MySQL Connector/J
-- jBCrypt
 
-Todas ellas ya están declaradas en el archivo `pom.xml`.
+Todas las dependencias ya se encuentran configuradas en el archivo **pom.xml**.
+
+---
 
 ## 🚀 Ejecución
 
 1. Clona el repositorio.
 
 ```bash
-git clone https://github.com/tu_usuario/tu_repositorio.git
+git clone https://github.com/MelvaSuarez29/proyjpa.git
 ```
 
-2. Abre el proyecto como proyecto Maven en IntelliJ IDEA.
+2. Ingresa al directorio del proyecto.
 
-3. Espera que Maven descargue todas las dependencias.
+```bash
+cd projjpa
+```
 
-4. Configura la conexión a MySQL.
+3. Abre el proyecto en IntelliJ IDEA o Eclipse.
 
-5. Ejecuta la clase:
+4. Espera que Maven descargue las dependencias.
+
+5. Verifica la conexión con MySQL.
+
+6. Ejecuta la clase:
 
 ```text
 Launcher.java
@@ -132,86 +143,31 @@ mvn clean compile
 mvn javafx:run
 ```
 
-## 🔐 Roles del sistema
+---
 
-### ADMIN
+## 📄 Reporte en consola
 
-Tiene acceso completo al sistema.
+Al presionar el botón **Imprimir Reporte**, el sistema genera un listado completo de todas las películas almacenadas en la base de datos y lo muestra en la consola.
 
-- Insertar productos
-- Modificar productos
-- Eliminar productos
-- Buscar productos
-- Mostrar productos
-- Imprimir reportes
-
-### VENDEDOR
-
-Tiene acceso limitado.
-
-Puede:
-
-- Insertar productos
-- Eliminar productos
-- Buscar productos
-- Mostrar productos
-- Imprimir reportes
-
-No puede:
-
-- Modificar productos
-
-### CLIENTE
-
-Solo puede consultar información.
-
-Puede:
-
-- Buscar productos
-- Visualizar productos
-- Imprimir reportes
-
-No puede:
-
-- Crear productos
-- Modificar productos
-- Eliminar productos
-
-## 📄 Reporte
-
-La opción **Imprimir Reporte** genera un listado tabular de todos los productos registrados mostrando la información directamente en la consola.
-
-## 🔒 Seguridad
-
-El sistema implementa autenticación segura mediante BCrypt.
-
-Características:
-
-- Las contraseñas nunca se almacenan en texto plano.
-- Se guarda únicamente el hash BCrypt.
-- Validación mediante:
-
-```java
-BCrypt.checkpw(passwordIngresada, hashAlmacenado);
-```
-
-- Uso de `PreparedStatement` para prevenir ataques de inyección SQL.
+---
 
 ## 👤 Autora
 
-**Melva Suárez**  
-Programación Orientada a Objetos
+**Melva Suárez**
+---
 
 ## 📌 Mejoras futuras
 
-- Recuperación de contraseña.
-- Gestión de categorías de productos.
+- Búsqueda por título.
+- Búsqueda por director.
+- Filtros por género.
 - Exportación de reportes a PDF.
-- Exportación a Excel.
-- Auditoría de acciones por usuario.
-- Dashboard con estadísticas.
-- Validaciones adicionales en formularios.
+- Exportación de reportes a Excel.
+- Internacionalización (i18n).
+- Temas claro y oscuro para la interfaz.
+
+---
 
 ## 📜 Licencia
 
-Este proyecto fue desarrollado con fines académicos y educativos. Puede utilizarse, modificarse y adaptarse libremente respetando la autoría correspondiente.
+Este proyecto se distribuye con fines educativos y académicos. Puedes utilizarlo y modificarlo libremente respetando la autoría correspondiente.
