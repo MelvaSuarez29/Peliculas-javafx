@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="680.0" prefWidth="600.0" style="-fx-background-color: #749CEA; -fx-background-image: url('file:/C:/Users/USUARIO/OneDrive/ESFOT/3er%20Semestre/POO/Actividades/proyjpa/src/main/resources/image/img-1.jpg'); -fx-background-position: center; -fx-background-size: cover;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epn.proyjpa.CatalogoPeliculasController">
+
+    <children>
+
+        <Label layoutX="145.0" layoutY="30.0" text="CATÁLOGO DE PELÍCULAS" textFill="#f7f5f5">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+
+        <Label layoutX="100.0" layoutY="100.0" text="ID:" textFill="#faf9f9">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+        <Label layoutX="100.0" layoutY="140.0" text="Título:" textFill="#fcf6f6">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+        <Label layoutX="100.0" layoutY="180.0" text="Director:" textFill="#faf7f7">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+        <Label layoutX="100.0" layoutY="220.0" text="Año:" textFill="#fcf5f5">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+        <Label layoutX="100.0" layoutY="260.0" text="Género:" textFill="#ece3e3">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+
+
+        <TextField fx:id="txtId" layoutX="220.0" layoutY="95.0" prefWidth="150.0" />
+        <TextField fx:id="txtNombre" layoutX="220.0" layoutY="135.0" prefHeight="25.0" prefWidth="240.0" />
+        <TextField fx:id="txtDirector" layoutX="220.0" layoutY="175.0" prefHeight="25.0" prefWidth="240.0" />
+        <TextField fx:id="txtPrecio" layoutX="220.0" layoutY="215.0" prefHeight="25.0" prefWidth="240.0" />
+        <TextField fx:id="txtCodigo" layoutX="220.0" layoutY="255.0" prefHeight="25.0" prefWidth="240.0" />
+
+
+        <Button layoutX="390.0" layoutY="95.0" onAction="#buscar" text="Buscar" />
+
+
+        <Button layoutX="80.0" layoutY="310.0" onAction="#insertar" prefWidth="90.0" text="Insertar" />
+        <Button layoutX="190.0" layoutY="310.0" onAction="#modificar" prefWidth="90.0" text="Modificar" />
+        <Button layoutX="300.0" layoutY="310.0" onAction="#mostrar" prefWidth="90.0" text="Mostrar" />
+        <Button layoutX="410.0" layoutY="310.0" onAction="#eliminar" prefWidth="90.0" text="Eliminar" textFill="RED" />
+
+
+        <TableView fx:id="tablaProductos" layoutX="40.0" layoutY="360.0" prefHeight="230.0" prefWidth="520.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="40.0" text="ID" />
+                <TableColumn fx:id="colProducto" prefWidth="160.0" text="Título" />
+                <TableColumn id="coldirector" fx:id="colDirector" prefWidth="130.0" text="Director" />
+                <TableColumn id="colanio" fx:id="colPrecio" prefWidth="60.0" text="Año" />
+                <TableColumn id="colgenero" fx:id="colCodigo" prefWidth="130.0" text="Género" />
+            </columns>
+        </TableView>
+        <Button layoutX="240.0" layoutY="615.0" onAction="#imprimirReporte" text="Imprimir Reporte" />
+
+    </children>
+
+</Pane>
