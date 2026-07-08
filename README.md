@@ -199,13 +199,7 @@ BCrypt.checkpw(passwordIngresada, hashAlmacenado);
 
 ## 👤 Autora
 
-**Melva Suárez**
-
-GitHub:
-https://github.com/MelvaSuarez29
-
-Escuela Politécnica Nacional - ESFOT
-
+**Melva Suárez**  
 Programación Orientada a Objetos
 
 ## 📌 Mejoras futuras
